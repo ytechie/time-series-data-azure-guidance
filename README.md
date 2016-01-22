@@ -17,7 +17,7 @@ Click on a storage solution header for details.
 <table>
     <tr>
         <th></th>
-        <th><a href="sql-database/sql-database.md">SQL Database</a></th>
+        <th><a href="storage/sql-database/sql-database.md">SQL Database</a></th>
         <th>Blob Storage</th>
         <th>HBase</th>
         <th>Azure Data Lake</th>
