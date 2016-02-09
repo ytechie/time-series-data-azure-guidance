@@ -65,7 +65,7 @@ Click on a storage solution header for details.
     </tr>
     <tr>
         <td>Cost</td>
-        <td></td>
+        <td>Configurable</td>
         <td></td>
         <td></td>
         <td></td>
