@@ -6,6 +6,15 @@ Since SQL Server is already part of many architectures, it makes sense to evalua
 
 **Important Note:** Performance numbers are only to give a general idea about what performance is possible. They should not be considered official or unofficial benchmarks.
 
+## Running the Sample
+
+1. Create a V12 SQL Database in Azure
+1. Clone this repository
+1. Open the sample `/storage/sql-database/sample` in Visual Studio 2015
+1. Copy the `ConnectionStrings.config.SAMPLE` to `ConnectionStrings.config`
+1. Change the connection string in `ConnectionStrings.config`
+1. Run it - data will start being bulk inserted into your database
+
 ## Write Performance
 
 How do we get data quickly into SQL Database? In order to see what was possible, I created a sample console application in .NET to bulk insert records. This sample uses a custom [DbDataReader](https://msdn.microsoft.com/en-us/library/system.data.common.dbdatareader(v=vs.110).aspx) class to generate random time-series values.
