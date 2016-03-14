@@ -15,6 +15,8 @@ namespace sql_database_sample
         private DatasourceRecord.DataTypeEnum _dataType;
         private Random _random;
 
+        private DateTime _lastTime = DateTime.UtcNow;
+
         private List<string> _fields = new List<string> { "Timestamp", "DatasourceId", "Value" };
         
 
@@ -189,7 +191,8 @@ namespace sql_database_sample
             }
             if(ordinal == 2)
             {
-                return _currentRecord.Value;
+                //return _currentRecord.Value;
+                return _currentRecord.GetDoubleValue();
             }
 
             throw new NotSupportedException("Don't support column " + ordinal);
@@ -213,14 +216,20 @@ namespace sql_database_sample
 
         public override bool Read()
         {
+            _lastTime = _lastTime.AddSeconds(1);
+
             _currentRecord = new DatasourceRecord();
-            _currentRecord.Timestamp = DateTime.UtcNow;
+            _currentRecord.Timestamp = _lastTime;
             _currentRecord.DatasourceId = _datasourceId;
             _currentRecord.DataType = _dataType;
 
             if(_dataType == DatasourceRecord.DataTypeEnum.Double)
             {
                 _currentRecord.SetDoubleValue(_random.NextDouble());
+            }
+            else if(_dataType == DatasourceRecord.DataTypeEnum.String)
+            {
+                _currentRecord.SetStringValue(_random.NextDouble().ToString());
             }
             else
             {
