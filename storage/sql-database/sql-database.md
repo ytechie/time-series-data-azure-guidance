@@ -58,14 +58,21 @@ Turning on compression is simple:
     ALTER TABLE Dbo.Data REBUILD PARTITION = ALL
     WITH (DATA_COMPRESSION = PAGE);
     
+To determine storage requirements, we use the simple formula of `table size / number of rows`.
+
+To calculate the space used by the table and the number of rows3703: `sp_spaceused Data`
+    
 With compression on, we're able to store 10 million rows in approximately 375,000 KB. When we factor in the index size of 455,000 KB, our average record size is **81 bytes**.
+
+If a specific data type is used, for example using `float` instead of `varbinary(max)`, our storage efficiency doubles. Each record can be stored in **~40 bytes**.
 
 <table>
     <tr>
         <td>Level</td>
         <td>DTUs</td>
         <td>Space (GB)</td>
-        <td>Records</td>
+        <td>Records varbinary(max)</td>
+        <td>Records float</td>
         <td>Approx. Insert Rate</td>
     </tr>
     <tr>
@@ -73,6 +80,7 @@ With compression on, we're able to store 10 million rows in approximately 375,00
         <td>15</td>
         <td>250</td>
         <td>3,318,702,167</td>
+        <td>6,590,172,489</td>
         <td>4,000</td>
     </tr>
     <tr>
@@ -80,11 +88,29 @@ With compression on, we're able to store 10 million rows in approximately 375,00
         <td>125</td>
         <td>500</td>
         <td>6,637,404,334</td>
+        <td>13,180,344,978</td>
         <td>9,900</td>
     </tr>
 </table>
 
-In summary, we're able to store billions of records with even the most inexpensive SQL Database option.
+In summary, we're able to store billions of **indexed** records with even the most inexpensive SQL Database option.
+
+## In-Memory Storage
+
+The premium tiers of the V12 SQL Database in Azure support in-memory databases. Here is an example create statement for an in-memory time series table:
+
+    CREATE TABLE [dbo].[Data_InMem]
+    (
+        [Timestamp] [datetime] NOT NULL,
+        [DatsourceId] [int] NOT NULL,
+        [Value] [varchar](1000) COLLATE SQL_Latin1_General_CP1_CI_AS NOT NULL,
+        CONSTRAINT [Data_InMem_primaryKey] PRIMARY KEY NONCLUSTERED HASH 
+        (
+            [Timestamp]
+        ) WITH ( BUCKET_COUNT = 131072)
+    ) WITH ( MEMORY_OPTIMIZED = ON , DURABILITY = SCHEMA_AND_DATA )
+    
+A benefit analysis for in-mem is in progress. Stay tuned.
 
 ## Cost
 
