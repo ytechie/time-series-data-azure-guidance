@@ -60,7 +60,7 @@ Turning on compression is simple:
     
 To determine storage requirements, we use the simple formula of `table size / number of rows`.
 
-To calculate the space used by the table and the number of rows3703: `sp_spaceused Data`
+To calculate the space used by the table and the number of rows: `sp_spaceused Data`
     
 With compression on, we're able to store 10 million rows in approximately 375,000 KB. When we factor in the index size of 455,000 KB, our average record size is **81 bytes**.
 
