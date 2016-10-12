@@ -10,8 +10,6 @@ These third-party solutions may be much easier to implement versus creating an i
 
 ## High-Level Comparison of Popular Storage Approaches
 
-These are currently untested.
-
 Click on a storage solution header for details.
 
 <table>
@@ -20,7 +18,7 @@ Click on a storage solution header for details.
         <th><a href="storage/sql-database/sql-database.md">SQL Database</a></th>
         <th>Blob Storage</th>
         <th>HBase</th>
-        <th>Azure Data Lake</th>
+        <th><a href="storage/azure-data-lake/azure-data-lake.md">Azure Data Lake</a></th>
         <th>OpenTSDB</th>
     </tr>
     <tr>
@@ -28,7 +26,7 @@ Click on a storage solution header for details.
         <td>Excellent</td>
         <td></td>
         <td></td>
-        <td></td>
+        <td>Excellent</td>
         <td></td>
     </tr>
     <tr>
@@ -36,7 +34,7 @@ Click on a storage solution header for details.
         <td>Excellent</td>
         <td>Poor</td>
         <td></td>
-        <td></td>
+        <td>Poor</td>
         <td></td>
     </tr>
     <tr>
@@ -44,7 +42,7 @@ Click on a storage solution header for details.
         <td>Excellent</td>
         <td>Good</td>
         <td></td>
-        <td></td>
+        <td>Excellent</td>
         <td></td>
     </tr>
     <tr>
@@ -52,7 +50,7 @@ Click on a storage solution header for details.
         <td>Good (TSQL)</td>
         <td>Poor</td>
         <td></td>
-        <td>Good</td>
+        <td>Excellent</td>
         <td></td>
     </tr>
     <tr>
@@ -60,7 +58,7 @@ Click on a storage solution header for details.
         <td>Excellent</td>
         <td>Excellent</td>
         <td></td>
-        <td>Poor</td>
+        <td>Excellent</td>
         <td></td>
     </tr>
     <tr>
@@ -68,7 +66,7 @@ Click on a storage solution header for details.
         <td>Configurable</td>
         <td></td>
         <td></td>
-        <td></td>
+        <td>Excellent</td>
         <td></td>
     </tr>
     <tr>
@@ -76,7 +74,7 @@ Click on a storage solution header for details.
         <td></td>
         <td></td>
         <td></td>
-        <td></td>
+        <td>Excellent</td>
         <td></td>
     </tr>
     <tr>
@@ -84,7 +82,7 @@ Click on a storage solution header for details.
         <td>Excellent</td>
         <td></td>
         <td></td>
-        <td></td>
+        <td>Poor</td>
         <td></td>
     </tr>
 </table>
